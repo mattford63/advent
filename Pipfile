@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+[dev-packages]
+ipython = "*"
+pytest = "*"
+pytest-cov = ">=2.8.1"
+pytest-randomly = "==1.2.3"
+Flask-Testing = "==0.8.0"
+flake8 = "*"
+'python-language-server[all]' = "*"
+pyls-mypy = "*"
+pyls-isort = "*"
+
+[requires]
+python_version = "3.9"
