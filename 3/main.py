@@ -17,9 +17,10 @@ def read_input():
         return [parse_line(l) for l in fd.read().splitlines()]
 
 
-# Model
 rows = read_input()
-cols = [list(c) for c in zip(*rows)]  # transpose
+
+# Model
+cols = [list(c) for c in zip(*rows)]  # transpose of rows
 
 n_rows = len(rows)
 n_cols = len(cols)
@@ -35,6 +36,22 @@ init_bounds = [0, n_rows]  # 0 means infinite
 
 
 # Logic
+def travel(pos, step, bounds):
+    if in_bounds(pos, step, bounds):
+
+        pos['geog'][0] += step[0]
+        pos['geog'][1] += step[1]
+
+        pos['grid'][0] = pos['geog'][0] % n_cols
+        pos['grid'][1] = pos['geog'][1] % n_rows
+
+        pos['trees'] += is_tree(pos)
+        pos['steps'] += 1
+        return True
+    else:
+        return False
+
+
 def is_tree(pos):
     col = cols[pos['grid'][0]]
     return col[pos['grid'][1]]
@@ -50,27 +67,15 @@ def in_bounds(pos, step, bounds):
     return (cb == 0 or c <= cb) and (rb == 0 or r <= rb)
 
 
-def travel(pos, step, bounds):
-    if in_bounds(pos, step, bounds):
-        pos['geog'][0] += step[0]
-        pos['geog'][1] += step[1]
-        pos['grid'][0] = pos['geog'][0] % n_cols
-        pos['grid'][1] = pos['geog'][1] % n_rows
-        pos['trees'] += is_tree(pos)
-        pos['steps'] += 1
-        return True
-    else:
-        return False
-
-
 def journey(step):
     pos = deepcopy(init_pos)
     bounds = init_bounds
+
     while travel(pos, step, bounds):
         pass
     return pos
 
 
 part1 = journey([3, 1])
-part2 = reduce(mul, [journey(s)['trees']
+part2 = reduce(mul[journey(s)['trees']
                      for s in [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]]])
