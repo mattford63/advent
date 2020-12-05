@@ -15,6 +15,7 @@ flake8 = "*"
 'python-language-server[all]' = "*"
 pyls-mypy = "*"
 pyls-isort = "*"
+debugpy = "*"
 
 [requires]
 python_version = "3.9"
