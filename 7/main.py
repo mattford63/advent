@@ -4,7 +4,7 @@ import pygraphviz as pgv
 
 
 def read_input():
-    with open('input') as fd:
+    with open('input_test') as fd:
         for l in fd.read().splitlines():
             add_line_to_graph(l)
 
