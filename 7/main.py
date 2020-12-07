@@ -1,6 +1,6 @@
 import re
-
 import networkx as nx
+import pygraphviz as pgv
 
 
 def read_input():
@@ -39,3 +39,6 @@ def sum_of_bags(node):
 
 
 part2 = sum_of_bags('shiny gold') - 1
+
+
+nx.nx_agraph.to_agraph(G).write('bags.dot')

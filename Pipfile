@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 networkx = "*"
+pygraphviz = "*"
 
 [dev-packages]
 ipython = "*"
