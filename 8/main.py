@@ -84,6 +84,7 @@ def run():
             path.append(ep)
         else:
             pass
+    print("Prog infinite loop: ", i, ep, state)
     return False
 
 
